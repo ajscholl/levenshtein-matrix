@@ -1,0 +1,16 @@
+**/dist/
+**/dist-newstyle/
+**/.cabal-sandbox/
+**/cabal.sandbox.config
+.DS_Store
+*.tmp
+.Trashes
+Icon?
+Thumbs.db
+.Spotlight-V100
+._*
+*.log
+*.o
+*.d
+*.hi
+.stack-work
