@@ -15,6 +15,15 @@ cabal-version:       >=1.10
 executable levenstein-matrix
   main-is:             Main.hs
   other-modules:       Levenstein
-  build-depends:       base >=4.10 && < 5, text, warp, array, wai, http-types, bytestring
+  build-depends:
+    base >=4.10 && < 5,
+    text,
+    warp,
+    array,
+    wai,
+    http-types,
+    bytestring,
+    cassava,
+    attoparsec
   hs-source-dirs:      src
   default-language:    Haskell2010
