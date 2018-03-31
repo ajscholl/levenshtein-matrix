@@ -52,7 +52,7 @@ avgMatrix xs = mapMatrix (\ x -> fromIntegral x / fromIntegral (length xs)) $ ad
 
 toAvgDist :: [Text] -> [[Text]] -> Text
 toAvgDist langs xs = pack $ "as.dist(matrix(c("
-    ++ intercalate ", " [show d | ds <- avgMatrix [distMatrix ys | ys <- xs], d <- ds]
+    ++ intercalate ",\n" [intercalate ", " [show d | d <- ds] | ds <- avgMatrix [distMatrix ys | ys <- xs]]
     ++ "), ncol = "
     ++ show (length $ head xs)
     ++ ", nrow = "
@@ -61,7 +61,7 @@ toAvgDist langs xs = pack $ "as.dist(matrix(c("
     ++ intercalate ", " ["\"" ++ unpack l ++ "\"" | l <- langs]
     ++ "), c("
     ++ intercalate ", " ["\"" ++ unpack l ++ "\"" | l <- langs]
-    ++ "))))"
+    ++ "))))\n"
 
 toDist :: [Text] -> Text
 toDist xs = pack $ "as.dist(matrix(c("

@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Levenstein where
+module Levenstein (textLevensteinDistance) where
 
 import Control.Monad.ST
 
@@ -11,9 +11,15 @@ import Data.STRef
 import Data.Text (Text)
 import qualified Data.Text as T
 
+toSameLetter :: Char -> Char
+toSameLetter 'ö' = 'ø'
+toSameLetter 'ä' = 'æ'
+toSameLetter 'w' = 'v'
+toSameLetter a   = a
+
 -- | Remove whitespace from both ends and ensure case insensitivity.
 normalize :: Text -> Text
-normalize = T.strip . T.toLower
+normalize = T.map toSameLetter . T.strip . T.toLower
 
 {-# SPECIALIZE INLINE textRunWithPosM_ :: (Char -> Int -> ST s ()) -> Text -> ST s () #-}
 -- | Fold over a text with the position of the character.
