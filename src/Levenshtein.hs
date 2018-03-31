@@ -14,7 +14,7 @@ import qualified Data.Text as T
 toSameLetter :: Char -> Char
 toSameLetter 'ö' = 'ø'
 toSameLetter 'ä' = 'æ'
-toSameLetter 'w' = 'v'
+--toSameLetter 'w' = 'v'
 toSameLetter a   = a
 
 -- | Remove whitespace from both ends and ensure case insensitivity.
