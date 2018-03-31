@@ -1,4 +1,4 @@
-# Revision history for levenstein-matrix
+# Revision history for levenshtein-matrix
 
 ## 0.1.0.0  -- YYYY-mm-dd
 

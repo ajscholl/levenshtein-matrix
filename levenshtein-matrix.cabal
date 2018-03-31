@@ -1,7 +1,7 @@
-name:                levenstein-matrix
+name:                levenshtein-matrix
 version:             0.1.0.0
-synopsis:            A small webservice to compute the levenstein distance of a list of words.
-description:         Small webapp computing levenstein distances of different words.
+synopsis:            A small webservice to compute the levenshtein distance of a list of words.
+description:         Small webapp computing levenshtein distances of different words.
 license:             BSD3
 license-file:        LICENSE
 author:              Anselm Jonas Scholl
@@ -12,9 +12,9 @@ build-type:          Simple
 extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
-executable levenstein-matrix
+executable levenshtein-matrix
   main-is:             Main.hs
-  other-modules:       Levenstein
+  other-modules:       Levenshtein
   build-depends:
     base >=4.10 && < 5,
     text,

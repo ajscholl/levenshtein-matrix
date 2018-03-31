@@ -21,7 +21,7 @@ import Network.HTTP.Types.Status
 import Network.Wai
 import Network.Wai.Handler.Warp
 
-import Levenstein
+import Levenshtein
 
 import System.Environment
 
@@ -65,7 +65,7 @@ toAvgDist langs xs = pack $ "as.dist(matrix(c("
 
 toDist :: [Text] -> Text
 toDist xs = pack $ "as.dist(matrix(c("
-    ++ intercalate ", " [show $ textLevensteinDistance a b | a <- xs, b <- xs]
+    ++ intercalate ", " [show $ textLevenshteinDistance a b | a <- xs, b <- xs]
     ++ "), ncol = "
     ++ show (length xs)
     ++ ", nrow = "
@@ -84,7 +84,7 @@ onCsv :: (Csv.Header, Csv.Csv) -> ByteString
 onCsv = T.encodeUtf8 . (uncurry toAvgDist) . csvText
 
 distMatrix :: [Text] -> Matrix Int
-distMatrix wordList = [[textLevensteinDistance a b | b <- wordList] | a <- wordList]
+distMatrix wordList = [[textLevenshteinDistance a b | b <- wordList] | a <- wordList]
 
 main :: IO ()
 main = do

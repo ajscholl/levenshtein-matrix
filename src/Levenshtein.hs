@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Levenstein (textLevensteinDistance) where
+module Levenshtein (textLevenshteinDistance) where
 
 import Control.Monad.ST
 
@@ -31,18 +31,18 @@ textRunWithPosM_ f = go 0
             Just (c, t') -> f c n >> go (n + 1) t'
 
 ------------------------
--- * Levenstein distance
+-- * Levenshtein distance
 ------------------------
 
--- | Compute the levenstein distance of two texts (number of changes to get from a to b)
-textLevensteinDistance :: Text -> Text -> Int
-textLevensteinDistance a b = textLevensteinDistance' (normalize a) (normalize b)
+-- | Compute the levenshtein distance of two texts (number of changes to get from a to b)
+textLevenshteinDistance :: Text -> Text -> Int
+textLevenshteinDistance a b = textLevenshteinDistance' (normalize a) (normalize b)
 
--- | 'textLevensteinDistance' without normalization.
-textLevensteinDistance' :: Text -> Text -> Int
-textLevensteinDistance' "" x = T.length x
-textLevensteinDistance' x "" = T.length x
-textLevensteinDistance' a b  | a == b = 0
+-- | 'textLevenshteinDistance' without normalization.
+textLevenshteinDistance' :: Text -> Text -> Int
+textLevenshteinDistance' "" x = T.length x
+textLevenshteinDistance' x "" = T.length x
+textLevenshteinDistance' a b  | a == b = 0
                              | leftLen /= rightLen, right `T.isInfixOf` left = leftLen - rightLen
                              | otherwise = runSTUArray helperST ! rightLen
     where
